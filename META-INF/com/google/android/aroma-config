@@ -1,0 +1,116 @@
+﻿ini_set("force_colorspace","rgba");
+anisplash(1,
+"splash/material5", 500,
+"splash/material4", 500,
+"splash/material3", 500,
+"splash/material2", 500,
+"splash/material1", 500,
+"splash/material", 300);
+
+fontresload( "0", "ttf/Roboto-Regular.ttf", "12" );
+fontresload( "1", "ttf/Roboto-Regular.ttf", "16" ); 
+
+theme("material_green");
+
+ini_set("text_next", 				"Next");
+ini_set("text_back", 				"Back");
+ini_set("text_no", 					"No");
+ini_set("text_yes", 				"Yes");
+ini_set("text_quit", 				"Quit");
+ini_set("text_quit_msg", 			"  Do you really want quit Aroma?");
+ini_set("text_about", 				"About");
+
+########################################################################
+###########################Information##################################
+########################################################################
+
+ini_set("rom_name",             "Lollipop Apps");
+ini_set("rom_author",           "Marco Marinho");
+
+########################################################################
+##############################Aroma#####################################
+########################################################################
+
+ini_set("rom_version",          "1.0");
+ini_set("rom_date",             "18.10.2014");
+
+########################################################################
+################################Welcome#################################
+########################################################################
+
+viewbox(
+  " ",
+  "<b>Welcome</b>\n\n\n\n\n\n"+
+  "  <#selectbg_g><b>Version</b>:  				" + ini_get("rom_version") + "\n"+
+  "  <b>Release date</b>:  			" + ini_get("rom_date") +  "\n"+
+  "  <b>Developer</b>: 					" + ini_get("rom_author") + "\n\n\n\n\n\n\n\n\n\n\n\n\n"+
+  "Press <b>Next</b> to start installation.</#>",
+  "@welcome"
+);
+
+agreebox(
+	" ",
+	"Terms of Use",
+	"@agreement",
+	"" + readfile_aroma("agreement.txt"),
+	"I agree",
+	"  To start installation you should press 'I agree' button."
+);
+
+textbox(
+	" ",
+	"Contributors",
+	"@text",
+	resread("credits.txt")
+);
+
+########################################################################
+#############################Checkboxes#############################
+########################################################################
+
+checkbox(
+  " ",
+  "<b>Customization</b>",
+  "@install",
+  "checkbox.prop",
+        "Google Apps",		"", 	2,
+			"Google Now Launcher", 	1,
+			"Google Keyboard", 	0,
+			"Google Play Store", 	0,
+			"Google Play Services", 	0,
+		"System",		"", 	2,
+			"Boot Animation", 	1,
+			"Fonts", 	0,
+			"Media Audio", 	0
+);
+
+
+########################################################################
+###############################Installation################################
+########################################################################
+if
+  confirm(
+    " ",
+    "<@center>We will now install the selected \n\n<b>"+ ini_get("rom_name")</@>",
+    "@warning",
+	install(
+		" ",
+		"<b>Installing</b>",
+		"@install",
+		"Installation of <b>"+ini_get("rom_name")+"</b> completed."
+	);
+
+########################################################################
+###########################Ending############################
+########################################################################
+
+	ini_set("text_next", "End");
+	
+	checkviewbox(
+		" ",
+		"<b>"+ini_get("rom_name")+" "+ini_get("rom_version")+"</b> was successfully installed on your phone.\n\n\n\n"+
+		"<#selectbg_g>Don't forget to leave a feeback on <b>XDA</b>.</#>\n\n\n"+
+		"<#selectbg_g>Have a nice day!</#>\n\n"+
+	);
+		reboot("onfinish");
+endif;
