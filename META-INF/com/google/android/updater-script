@@ -1,7 +1,83 @@
-ui_print("ANDROID LOLLIPOP APPS");
-ui_print("marcomarinho@xda 2014");
-ui_print(">> Installing BootAnimation ");
-run_program("/sbin/mount", "/system");
-package_extract_dir("system", "/system");
-run_program("/sbin/umount", "/system");
-ui_print(">> We're Done!");
+#
+# Updater-script for Lollipop Apps
+# By MarcoMarinho
+ui_print("==============================================");
+ui_print("    Android 5.0 (Lollipop) Apps               ");
+ui_print("==============================================");
+ui_print(" Brought to you by:                           ");
+ui_print("  * marcomarinho                              ");
+ui_print("  @ XDADevelopers 2014                        ");
+ui_print("==============================================");
+ui_print("    !Special Thans to amarullz & Daniiiik49   ");
+ui_print("    Remember: Always perform backups!         ");
+ui_print("==============================================");
+ui_print("WARNING: This mod has only been tested on     ");
+ui_print("devices I own. Please see the thread over at  ");
+ui_print("XDA for more information regarding supported  ");
+ui_print("devices.                                      ");
+ui_print("==============================================");
+ui_print(" ");
+
+ui_print(">> Mounting partitions");
+set_progress(0.15);
+run_program("/sbin/busybox", "mount", "/system"); 
+ui_print("");
+ui_print("");
+
+ui_print(">> Writing System");
+set_progress(0.30);
+package_extract_dir("common/system", "/system");
+
+ui_print(">> Formatting Cache & Dalvik Cache");
+delete_recursive("/cache");
+delete_recursive("/data/dalvik-cache");
+
+
+########## AROMA ##########
+
+# Options for Google Apps
+
+if file_getprop("checkbox.prop","selected.0") == "1" then
+ui_print(">>> Installing Google Now Launcher ");
+#package_extract_dir("common/aroma/drivers/jb/sq/libv4a_fx_ics.so", "/system/lib/soundfx");
+endif;
+
+if file_getprop("checkbox.prop","selected.0") == "2" then
+ui_print(">>> Installing Google Keyboard ");
+#package_extract_dir("common/aroma/drivers/jb/hq/libv4a_fx_ics.so", "/system/lib/soundfx");
+endif;
+
+if file_getprop("checkbox.prop","selected.0") == "3" then
+ui_print(">>> Installing Google Play Store ");
+#package_extract_dir("common/aroma/drivers/jb/neon/libv4a_fx_ics.so", "/system/lib/soundfx");
+endif;
+
+if file_getprop("checkbox.prop","selected.0") == "4" then
+ui_print(">>> Installing Google Play Services ");
+#package_extract_dir("common/aroma/drivers/ics/sq/libv4a_fx_ics.so", "/system/lib/soundfx");
+endif;
+
+if file_getprop("checkbox.prop","selected.0") == "5" then
+ui_print(">>> Installing BootAnimation ");
+#package_extract_dir("common/aroma/drivers/ics/hq/libv4a_fx_ics.so", "/system/lib/soundfx");
+endif;
+
+if file_getprop("checkbox.prop","selected.0") == "6" then
+ui_print(">>> Installing Fonts ");
+#package_extract_dir("common/aroma/drivers/ics/neon/libv4a_fx_ics.so", "/system/lib/soundfx");
+endif;
+
+if file_getprop("checkbox.prop","selected.0") == "7" then
+ui_print(">>> Installing Media Audio ");
+#package_extract_dir("common/aroma/drivers/ics/neon/libv4a_fx_ics.so", "/system/lib/soundfx");
+endif;
+
+########## END OF AROMA ##########
+
+ui_print(">> Unmounting partitions");
+set_progress(0.99);
+run_program("/sbin/busybox", "umount", "/system"); 
+ui_print("");
+ui_print("");
+ui_print(">>> Setup Complete");
+set_progress(1.0);
