@@ -37,39 +37,116 @@ delete_recursive("/data/dalvik-cache");
 
 # Options for Google Apps
 
-if file_getprop("checkbox.prop","selected.0") == "1" then
+if file_getprop("checkbox.prop","item.0.1") == "1" then
+ui_print(">>> Installing Calculator ");
+#package_extract_dir("common/apps/Calculator.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.2") == "1" then
+ui_print(">>> Installing Gmail ");
+#package_extract_dir("common/apps/Gmail.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.3") == "1" then
+ui_print(">>> Installing Google Calendar");
+#package_extract_dir("common/apps/GoogleCalendar.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.4") == "1" then
+ui_print(">>> Installing Google Camera");
+#package_extract_dir("common/apps/GoogleCamera.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.5") == "1" then
+ui_print(">>> Installing Google Earth");
+#package_extract_dir("common/apps/GoogleEarth.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.6") == "1" then
+ui_print(">>> Installing Google Express Shopping");
+#package_extract_dir("common/apps/GoogleExpressShopping.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.7") == "1" then
+ui_print(">>> Installing Google Fit");
+#package_extract_dir("common/apps/GoogleFit.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.7") == "1" then
+ui_print(">>> Installing Google Magazines");
+#package_extract_dir("common/apps/GoogleMagazines.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.8") == "1" then
+ui_print(">>> Installing Google Maps");
+#package_extract_dir("common/apps/GoogleMaps.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.9") == "1" then
 ui_print(">>> Installing Google Now Launcher ");
-#package_extract_dir("common/aroma/drivers/jb/sq/libv4a_fx_ics.so", "/system/lib/soundfx");
+#package_extract_dir("common/apps/GoogleHome.apk", "/system/app");
+#package_extract_dir("common/apps/Velvet.apk","/system/priv-app");
+#package_extract_dir("common/libs/libgoogle_hotword_jni.so","/system/lib");
+#package_extract_dir("common/libs/libgoogle_recognizer_jni_l.so","/system/lib");
+#package_extract_dir("common/libs/libvcdecoder_jni.so","/system/lib");
+
 endif;
 
-if file_getprop("checkbox.prop","selected.0") == "2" then
+if file_getprop("checkbox.prop","item.0.10") == "1" then
 ui_print(">>> Installing Google Keyboard ");
-#package_extract_dir("common/aroma/drivers/jb/hq/libv4a_fx_ics.so", "/system/lib/soundfx");
+#package_extract_dir("common/apps/Keyboard.apk", "/system/app");
+#package_extract_dir("common/libs/libjni_latinimegoogle.so", "/system/lib");
 endif;
 
-if file_getprop("checkbox.prop","selected.0") == "3" then
+if file_getprop("checkbox.prop","item.0.11") == "1" then
+ui_print(">>> Installing Google Paidtasks ");
+#package_extract_dir("common/apps/GooglePaidtasks.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.12") == "1" then
+ui_print(">>> Installing Google Play Books ");
+#package_extract_dir("common/apps/GooglePlayBooks.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.13") == "1" then
+ui_print(">>> Installing Google Play Games ");
+#package_extract_dir("common/apps/GooglePlayGames.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.14") == "1" then
+ui_print(">>> Installing Google Play Music ");
+#package_extract_dir("common/apps/GooglePlayMusic.apk", "/system/app");
+endif;
+
+
+if file_getprop("checkbox.prop","item.0.15") == "1" then
 ui_print(">>> Installing Google Play Store ");
-#package_extract_dir("common/aroma/drivers/jb/neon/libv4a_fx_ics.so", "/system/lib/soundfx");
+#package_extract_dir("common/apps/GooglePlayStore.apk", "/system/app");
 endif;
 
-if file_getprop("checkbox.prop","selected.0") == "4" then
+if file_getprop("checkbox.prop","item.0.16") == "1" then
 ui_print(">>> Installing Google Play Services ");
-#package_extract_dir("common/aroma/drivers/ics/sq/libv4a_fx_ics.so", "/system/lib/soundfx");
+#package_extract_dir("common/apps/GooglePlayStore.apk", "/system/app");
 endif;
 
-if file_getprop("checkbox.prop","selected.0") == "5" then
+if file_getprop("checkbox.prop","item.0.17") == "1" then
+ui_print(">>> Installing Inbox by Gmail ");
+package_extract_dir("common/apps/Inbox.apk", "/system/app");
+endif;
+
+if file_getprop("checkbox.prop","item.0.18") == "1" then
 ui_print(">>> Installing BootAnimation ");
-#package_extract_dir("common/aroma/drivers/ics/hq/libv4a_fx_ics.so", "/system/lib/soundfx");
+#package_extract_dir("common/bootanimations/bootanimation.zip", "/system/media");
 endif;
 
-if file_getprop("checkbox.prop","selected.0") == "6" then
+if file_getprop("checkbox.prop","item.0.19") == "1" then
 ui_print(">>> Installing Fonts ");
-#package_extract_dir("common/aroma/drivers/ics/neon/libv4a_fx_ics.so", "/system/lib/soundfx");
+#package_extract_dir("common/fonts/", "/system/fonts");
 endif;
 
-if file_getprop("checkbox.prop","selected.0") == "7" then
+if file_getprop("checkbox.prop","item.0.20") == "1" then
 ui_print(">>> Installing Media Audio ");
-#package_extract_dir("common/aroma/drivers/ics/neon/libv4a_fx_ics.so", "/system/lib/soundfx");
+#package_extract_dir("common/media/", "/system/media");
 endif;
 
 ########## END OF AROMA ##########
